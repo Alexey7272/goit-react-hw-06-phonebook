@@ -10,7 +10,7 @@
 // 
 // Reduce
 
-import { legacy_createStore as createStore, combineReducers } from 'redux'
+import { legacy_createStore as createStore } from 'redux'
 import { contactReducer } from './reducer'
 import { devToolsEnhancer } from '@redux-devtools/extension';
 
