@@ -4,7 +4,6 @@ import ContactList from "./ContactList";
 import Filter from "./Filter";
 import styles from "./PhoneBook.module.css";
 import shortid from "shortid";
-import { useSelector } from 'react-redux';
 
 
 export default function App () {
