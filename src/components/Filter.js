@@ -10,8 +10,6 @@ const Filter = ({ filterQueue }) => {
 
     const handleChange = e => {
         const { value } = e.target;
-
-        filterQueue(value.trim().toLowerCase());
         dispatch(searchContacts(value.trim().toLowerCase()));
     };
 

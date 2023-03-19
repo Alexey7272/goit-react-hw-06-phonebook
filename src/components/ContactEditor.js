@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { getContacts } from "redux/contact/selectors";
 import { useSelector } from "react-redux";
 import { useDispatch  } from "react-redux";
-import { addContacts } from "redux/contact/actionCreators";
+import { addContacts } from "redux/contact/slice";
 import styles from "./PhoneBook.module.css";
 import shortid from "shortid";
 

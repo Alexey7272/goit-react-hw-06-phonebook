@@ -1,9 +1,9 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { getContacts } from 'redux/contact/selectors';
-import { removeContacts } from 'redux/contact/actionCreators';
+import { removeContact } from 'redux/contact/slice';
 import styles from "./PhoneBook.module.css";
 
-const ContactList = ({ onRemoveContact }) =>{
+const ContactList = () =>{
     const contacts = useSelector(getContacts)
     const filter = useSelector(state => state.filter)
 
@@ -22,7 +22,7 @@ const ContactList = ({ onRemoveContact }) =>{
                     {name}: {number}
     
                     <button 
-                      onClick={() => dispatch(removeContacts(id))}
+                      onClick={() => dispatch(removeContact(id))}
                       className={styles.Contacts__button}
                       >
                       Delete
