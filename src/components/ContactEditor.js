@@ -1,14 +1,30 @@
 import React, { useState } from "react";
+import { getContacts } from "redux/contact/selectors";
+import { useSelector } from "react-redux";
+import { useDispatch  } from "react-redux";
+import { addContacts } from "redux/contact/actionCreators";
 import styles from "./PhoneBook.module.css";
+import shortid from "shortid";
 
 
 export default function ContactEditor ({onSubmit}) {
     const [name, setName] = useState('');
     const [number, setNumber] = useState('');
 
+    const contacts = useSelector(getContacts);
+
+    const id = shortid.generate();
+    const dispatch = useDispatch(); 
+    
     const resetForm = () => {
         setName('');
         setNumber('');
+    };
+
+    const doesContactExist = nameQuery => {
+        return contacts.some(
+          contact => contact.name.toLowerCase() === nameQuery.toLowerCase()
+        );
     };
 
     const contactChange = evt => {
@@ -30,9 +46,13 @@ export default function ContactEditor ({onSubmit}) {
 
     const formSubmit = evt => {
         evt.preventDefault();
-        onSubmit({ name, number });
+        if (doesContactExist(name)) {
+            alert(`${name} is already in contacts`);
+            return;
+        };
         resetForm();
-    };
+        dispatch(addContacts({id, name, number})) 
+    }; 
 
     
     return (
@@ -66,4 +86,3 @@ export default function ContactEditor ({onSubmit}) {
         </form>
     );
 };
-
